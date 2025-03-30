@@ -1,0 +1,18 @@
+[Unit]
+Description=CSYE6225 Web Application
+After=network.target
+
+[Service]
+Type=simple
+User=csye6225user
+Group=csye6225
+WorkingDirectory=/opt/csye6225/webapp
+EnvironmentFile=/opt/csye6225/webapp/.env
+ExecStart=/usr/bin/node /opt/csye6225/webapp/index.js
+StandardOutput=append:/var/log/webapp.log
+StandardError=append:/var/log/webapp.log
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
